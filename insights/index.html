@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insights — SPINAR</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html,body{background:#050805;color:#fff;font-family:sans-serif;}
+    .nav-link{color:#9ca3af;font-size:14px;text-decoration:none;}
+    .nav-link:hover{color:#fff;}
+    .btn-primary{background:linear-gradient(135deg,#166534,#22c55e);color:#fff;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:500;border:none;cursor:pointer;text-decoration:none;display:inline-block;}
+    .card{background:#0F1410;border:1px solid #1A211A;border-radius:14px;padding:32px;transition:border-color .25s;text-decoration:none;color:#fff;display:block;}
+    .card:hover{border-color:#22c55e;}
+  </style>
+</head>
+<body>
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,8,5,.92);backdrop-filter:blur(12px);border-bottom:1px solid #1A211A;padding:0 40px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1200px;margin:0 auto;">
+      <a href="/"><img src="/assets/images/logo.png" alt="Spinar" style="height:52px;object-fit:contain;" /></a>
+      <div style="display:flex;gap:32px;align-items:center;">
+        <a href="/servicios" class="nav-link">Servicios</a>
+        <a href="/casos" class="nav-link">Casos</a>
+        <a href="/empresa" class="nav-link">Empresa</a>
+        <a href="/insights" class="nav-link">Insights</a>
+        <a href="/contacto" class="btn-primary">Hablar con un experto</a>
+      </div>
+    </div>
+  </nav>
+
+  <main style="max-width:1200px;margin:0 auto;padding:140px 40px 100px;">
+    <p style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#22c55e;margin-bottom:16px;">Insights</p>
+    <h1 style="font-size:clamp(36px,4vw,52px);font-weight:700;margin-bottom:16px;">Lo que sabemos, lo compartimos.</h1>
+    <p style="color:#9ca3af;font-size:17px;max-width:560px;line-height:1.7;margin-bottom:60px;">Perspectivas técnicas y de negocio para equipos que lideran la transformación digital.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
+      <a href="#" class="card">
+        <span style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#22c55e;">Automatización</span>
+        <h2 style="font-size:20px;font-weight:700;margin:12px 0;">Cómo automatizamos el 80% de los reportes operativos de una empresa de logística</h2>
+        <p style="color:#9ca3af;font-size:13px;line-height:1.7;margin-bottom:20px;">Un caso real: qué procesos se automatizaron, qué tecnología se usó y qué resultados se obtuvieron en 3 meses.</p>
+        <p style="color:#4b5563;font-size:12px;">Abril 2026 · 5 min de lectura</p>
+      </a>
+      <a href="#" class="card">
+        <span style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#22c55e;">IA aplicada</span>
+        <h2 style="font-size:20px;font-weight:700;margin:12px 0;">GPT en producción: lo que nadie te cuenta antes de implementar un LLM en tu empresa</h2>
+        <p style="color:#9ca3af;font-size:13px;line-height:1.7;margin-bottom:20px;">Latencia, costos, alucinaciones y gestión del contexto. Los problemas reales que encontramos y cómo los resolvimos.</p>
+        <p style="color:#4b5563;font-size:12px;">Marzo 2026 · 7 min de lectura</p>
+      </a>
+      <a href="#" class="card">
+        <span style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#22c55e;">Arquitectura</span>
+        <h2 style="font-size:20px;font-weight:700;margin:12px 0;">¿Cuándo conviene un monolito y cuándo microservicios? Una guía sin dogma</h2>
+        <p style="color:#9ca3af;font-size:13px;line-height:1.7;margin-bottom:20px;">La decisión más importante de arquitectura que podés tomar mal en las etapas tempranas de un producto.</p>
+        <p style="color:#4b5563;font-size:12px;">Febrero 2026 · 6 min de lectura</p>
+      </a>
+    </div>
+  </main>
+</body>
+</html>

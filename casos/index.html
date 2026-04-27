@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casos de Éxito — SPINAR</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html,body{background:#050805;color:#fff;font-family:sans-serif;}
+    .nav-link{color:#9ca3af;font-size:14px;text-decoration:none;}
+    .nav-link:hover{color:#fff;}
+    .btn-primary{background:linear-gradient(135deg,#166534,#22c55e);color:#fff;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:500;border:none;cursor:pointer;text-decoration:none;display:inline-block;}
+    .card{background:#0F1410;border:1px solid #1A211A;border-radius:14px;padding:36px;transition:border-color .25s;}
+    .card:hover{border-color:#22c55e;}
+    .metric{font-size:36px;font-weight:700;color:#22c55e;}
+  </style>
+</head>
+<body>
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,8,5,.92);backdrop-filter:blur(12px);border-bottom:1px solid #1A211A;padding:0 40px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1200px;margin:0 auto;">
+      <a href="/"><img src="/assets/images/logo.png" alt="Spinar" style="height:52px;object-fit:contain;" /></a>
+      <div style="display:flex;gap:32px;align-items:center;">
+        <a href="/servicios" class="nav-link">Servicios</a>
+        <a href="/casos" class="nav-link">Casos</a>
+        <a href="/empresa" class="nav-link">Empresa</a>
+        <a href="/insights" class="nav-link">Insights</a>
+        <a href="/contacto" class="btn-primary">Hablar con un experto</a>
+      </div>
+    </div>
+  </nav>
+
+  <main style="max-width:1200px;margin:0 auto;padding:140px 40px 100px;">
+    <p style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#22c55e;margin-bottom:16px;">Casos de éxito</p>
+    <h1 style="font-size:clamp(36px,4vw,56px);font-weight:700;margin-bottom:16px;">Resultados que hablan por sí solos.</h1>
+    <p style="color:#9ca3af;font-size:17px;max-width:560px;line-height:1.7;margin-bottom:60px;">No vendemos tecnología. Vendemos los resultados que la tecnología hace posibles.</p>
+
+    <div style="display:flex;flex-direction:column;gap:28px;">
+
+      <div class="card">
+        <div style="display:flex;gap:12px;align-items:center;margin-bottom:24px;">
+          <span style="background:#0a2010;color:#22c55e;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:.06em;">LOGÍSTICA</span>
+          <span style="color:#4b5563;font-size:12px;">800+ empleados</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;">
+          <div>
+            <h2 style="font-size:22px;font-weight:700;margin-bottom:20px;">Plataforma de gestión logística con integración ERP</h2>
+            <div style="margin-bottom:20px;">
+              <p style="font-size:12px;color:#4b5563;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">El problema</p>
+              <p style="color:#9ca3af;font-size:14px;line-height:1.7;">Gestión de rutas y entregas en planillas de Excel. 3 horas diarias de carga manual por operador. Sin visibilidad en tiempo real para el equipo de supervisión.</p>
+            </div>
+            <div>
+              <p style="font-size:12px;color:#4b5563;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">La solución</p>
+              <p style="color:#9ca3af;font-size:14px;line-height:1.7;">Plataforma web de gestión logística integrada al ERP existente, con automatización de reportes y dashboard de supervisión en tiempo real.</p>
+            </div>
+          </div>
+          <div>
+            <p style="font-size:12px;color:#4b5563;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:20px;">Resultados</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;">
+              <div><div class="metric">↓87%</div><p style="color:#9ca3af;font-size:12px;margin-top:4px;">Tiempo de carga manual</p></div>
+              <div><div class="metric">↑34%</div><p style="color:#9ca3af;font-size:12px;margin-top:4px;">Precisión en entregas</p></div>
+              <div><div class="metric">5 m</div><p style="color:#9ca3af;font-size:12px;margin-top:4px;">ROI alcanzado</p></div>
+              <div><div class="metric">0</div><p style="color:#9ca3af;font-size:12px;margin-top:4px;">Exports manuales/día</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="text-align:center;padding:60px;">
+        <p style="color:#4b5563;font-size:14px;margin-bottom:16px;">¿Querés ser el próximo caso de éxito?</p>
+        <a href="/contacto" class="btn-primary" style="font-size:15px;padding:14px 28px;">Hablemos de tu proyecto →</a>
+      </div>
+
+    </div>
+  </main>
+</body>
+</html>

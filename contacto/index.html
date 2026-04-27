@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto — SPINAR</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html,body{background:#050805;color:#fff;font-family:sans-serif;}
+    .nav-link{color:#9ca3af;font-size:14px;text-decoration:none;}
+    .nav-link:hover{color:#fff;}
+    .btn-primary{background:linear-gradient(135deg,#166534,#22c55e);color:#fff;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:500;border:none;cursor:pointer;text-decoration:none;display:inline-block;}
+    input,textarea,select{width:100%;background:#0F1410;border:1px solid #1A211A;border-radius:10px;padding:14px 16px;color:#fff;font-size:14px;outline:none;font-family:sans-serif;transition:border-color .2s;}
+    input:focus,textarea:focus,select:focus{border-color:#22c55e;}
+    label{font-size:13px;color:#9ca3af;margin-bottom:6px;display:block;}
+  </style>
+</head>
+<body>
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,8,5,.92);backdrop-filter:blur(12px);border-bottom:1px solid #1A211A;padding:0 40px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1200px;margin:0 auto;">
+      <a href="/"><img src="/assets/images/logo.png" alt="Spinar" style="height:52px;object-fit:contain;" /></a>
+      <div style="display:flex;gap:32px;align-items:center;">
+        <a href="/servicios" class="nav-link">Servicios</a>
+        <a href="/casos" class="nav-link">Casos</a>
+        <a href="/empresa" class="nav-link">Empresa</a>
+        <a href="/insights" class="nav-link">Insights</a>
+        <a href="/contacto" class="btn-primary">Hablar con un experto</a>
+      </div>
+    </div>
+  </nav>
+
+  <main style="max-width:640px;margin:0 auto;padding:140px 40px 80px;">
+    <p style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#22c55e;margin-bottom:16px;">Contacto</p>
+    <h1 style="font-size:42px;font-weight:700;margin-bottom:16px;">Hablemos de tu proyecto.</h1>
+    <p style="color:#9ca3af;font-size:16px;line-height:1.7;margin-bottom:52px;">Contanos tu desafío. Un miembro de nuestro equipo te contacta en menos de 24 horas hábiles.</p>
+
+    <form id="contact-form" style="display:flex;flex-direction:column;gap:20px;">
+      <div>
+        <label>Nombre y apellido</label>
+        <input type="text" name="nombre" placeholder="Espinola Gaspar" required />
+      </div>
+      <div>
+        <label>Email corporativo</label>
+        <input type="email" name="email" placeholder="vos@empresa.com" required />
+      </div>
+      <div>
+        <label>Empresa</label>
+        <input type="text" name="empresa" placeholder="Nombre de tu empresa" required />
+      </div>
+      <div>
+        <label>¿Cuál es tu principal desafío?</label>
+        <textarea name="desafio" rows="4" placeholder="Contanos brevemente qué querés resolver..." required></textarea>
+      </div>
+      <div>
+        <label>¿Cómo nos conociste? <span style="color:#4b5563;">(opcional)</span></label>
+        <select name="origen">
+          <option value="">Seleccioná una opción</option>
+          <option>Google</option>
+          <option>LinkedIn</option>
+          <option>Recomendación</option>
+          <option>Redes sociales</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-primary" style="padding:16px;font-size:15px;margin-top:8px;">Quiero hablar con el equipo de SPINAR</button>
+    </form>
+
+    <div id="success" style="display:none;text-align:center;padding:48px 0;">
+      <div style="font-size:48px;margin-bottom:16px;">✅</div>
+      <h2 style="font-size:24px;font-weight:700;margin-bottom:12px;">¡Mensaje recibido!</h2>
+      <p style="color:#9ca3af;">Te contactamos en menos de 24 horas hábiles.</p>
+    </div>
+
+    <div style="margin-top:52px;padding-top:40px;border-top:1px solid #1A211A;display:flex;flex-direction:column;gap:14px;">
+      <a href="mailto:spinar.services@gmail.com" style="color:#9ca3af;font-size:14px;text-decoration:none;" onmouseover="this.style.color='#22c55e'" onmouseout="this.style.color='#9ca3af'">✉️ &nbsp;spinar.services@gmail.com</a>
+      <a href="tel:+5491132368891" style="color:#9ca3af;font-size:14px;text-decoration:none;" onmouseover="this.style.color='#22c55e'" onmouseout="this.style.color='#9ca3af'">📞 &nbsp;+549 113236 8891</a>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('success').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

@@ -1,160 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spinar — Technology in Motion</title>
+  <title>SPINAR — Tecnología que escala tu negocio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            'brand-bg':     '#050805',
-            'brand-border': '#1A211A',
-            'brand-card':   '#0F1410',
+            bg: '#050805',
+            border: '#1A211A',
+            card: '#0F1410',
           }
         }
       }
     }
   </script>
   <style>
-    html, body { background-color: #050805; }
-
-    #loader {
-      position: fixed;
-      inset: 0;
-      background: #050805;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.6s ease;
-    }
-    #loader.fade-out {
-      opacity: 0;
-      pointer-events: none;
-    }
-    #loader video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    html, body { background: #050805; scroll-behavior: smooth; }
+    #loader { position:fixed; inset:0; background:#050805; z-index:9999; transition: opacity .6s ease; }
+    #loader.out { opacity:0; pointer-events:none; }
+    #loader video { width:100%; height:100%; object-fit:cover; }
+    #page { opacity:0; transition: opacity .6s ease; }
+    .nav-link { color:#9ca3af; font-size:14px; text-decoration:none; transition:color .2s; }
+    .nav-link:hover { color:#fff; }
+    .btn-primary { background:linear-gradient(135deg,#166534,#22c55e); color:#fff; padding:10px 22px; border-radius:8px; font-size:14px; font-weight:500; border:none; cursor:pointer; transition:opacity .2s; text-decoration:none; display:inline-block; }
+    .btn-primary:hover { opacity:.88; }
+    .btn-outline { background:transparent; color:#fff; padding:10px 22px; border-radius:8px; font-size:14px; border:1px solid #374151; cursor:pointer; transition:border-color .2s; text-decoration:none; display:inline-block; }
+    .btn-outline:hover { border-color:#6b7280; }
+    .card { background:#0F1410; border:1px solid #1A211A; border-radius:14px; padding:28px; transition:border-color .25s; }
+    .card:hover { border-color:#22c55e; }
+    .step-num { font-size:48px; font-weight:700; color:#22c55e; opacity:.25; line-height:1; }
+    .tag { font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:#22c55e; }
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .marquee-track { animation: marquee 20s linear infinite; display:flex; gap:60px; width:max-content; }
   </style>
 </head>
-<body class="bg-brand-bg text-white min-h-screen font-sans">
+<body class="text-white font-sans">
 
-  <!-- LOADER -->
-  <div id="loader">
-    <video id="intro-video" autoplay playsinline muted>
-      <source src="WhatsApp Video 2026-04-26 at 7.27.32 PM.mp4" type="video/mp4" />
-    </video>
-  </div>
+<!-- LOADER -->
+<div id="loader">
+  <video id="intro-video" autoplay playsinline muted>
+    <source src="assets/videos/intro.mp4" type="video/mp4" />
+  </video>
+</div>
 
-  <!-- PAGE -->
-  <div id="page" style="opacity:0; transition: opacity 0.6s ease;">
+<div id="page">
 
-    <!-- HEADER -->
-    <header class="flex justify-between items-center px-10 py-5 border-b border-brand-border">
-      <div class="flex items-center">
-        <img src="image.png" alt="Spinar" style="height:88px; object-fit:contain;" />
+  <!-- NAVBAR -->
+  <nav id="navbar" style="position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s,backdrop-filter .3s;padding:0 40px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1200px;margin:0 auto;">
+      <a href="/"><img src="assets/images/logo.png" alt="Spinar" style="height:56px;object-fit:contain;" /></a>
+      <div style="display:flex;gap:32px;align-items:center;">
+        <a href="/servicios" class="nav-link">Servicios</a>
+        <a href="/casos" class="nav-link">Casos</a>
+        <a href="/empresa" class="nav-link">Empresa</a>
+        <a href="/insights" class="nav-link">Insights</a>
+        <a href="/contacto" class="btn-primary">Hablar con un experto</a>
       </div>
-      <button class="bg-gradient-to-r from-green-700 to-green-500 px-5 py-2 rounded-md text-sm font-medium hover:opacity-90 transition">
-        Let's talk
-      </button>
-    </header>
+    </div>
+  </nav>
 
-    <!-- HERO -->
-    <section class="px-10 py-28 max-w-5xl">
-      <p class="text-green-400 text-xs tracking-widest mb-4 uppercase">Technology in Motion</p>
-      <h1 class="text-6xl font-semibold leading-tight mb-6">
-        We build systems that<br>move your business
-        <span class="text-green-400"> forward.</span>
+  <!-- HERO -->
+  <section style="min-height:100vh;display:flex;align-items:center;padding:120px 40px 80px;max-width:1200px;margin:0 auto;">
+    <div>
+      <p class="tag" style="margin-bottom:20px;">Tecnología en movimiento</p>
+      <h1 style="font-size:clamp(42px,5vw,72px);font-weight:700;line-height:1.1;max-width:800px;margin-bottom:24px;">
+        Convertimos procesos críticos en<br>
+        <span style="color:#22c55e;">ventajas competitivas.</span>
       </h1>
-      <p class="text-gray-400 text-lg max-w-xl leading-relaxed">
-        Scalable backend systems, intelligent automation and modern architectures designed for growth.
+      <p style="color:#9ca3af;font-size:18px;max-width:560px;line-height:1.7;margin-bottom:40px;">
+        Desarrollamos software, automatizamos operaciones con IA e integramos sistemas para empresas que no pueden permitirse quedarse atrás.
       </p>
-      <div class="mt-10 flex gap-4">
-        <button class="bg-green-600 hover:bg-green-500 transition px-6 py-3 rounded-md text-sm font-medium">
-          Our services
-        </button>
-        <button class="border border-gray-700 hover:border-gray-500 transition px-6 py-3 rounded-md text-sm">
-          Contact
-        </button>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:48px;">
+        <a href="/contacto" class="btn-primary" style="font-size:15px;padding:14px 28px;">Agendá una consulta gratuita</a>
+        <a href="/casos" class="btn-outline" style="font-size:15px;padding:14px 28px;">Ver casos de éxito →</a>
       </div>
-    </section>
+      <p style="color:#4b5563;font-size:13px;">+40 empresas corporativas confían en SPINAR</p>
+    </div>
+  </section>
 
-    <!-- SERVICES -->
-    <section class="px-10 py-20">
-      <h2 class="text-2xl font-medium mb-10">What we do</h2>
-      <div id="services-grid" class="grid gap-6" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));"></div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="px-10 py-20">
-      <h2 class="text-2xl font-medium mb-10">Get in touch</h2>
-      <div style="display:inline-block; background:#0F1410; border:1px solid #1A211A; border-radius:16px; padding:32px 40px; min-width:300px;">
-        <div style="display:flex; align-items:center; gap:16px; margin-bottom:24px;">
-          <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,#166534,#22c55e); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px; flex-shrink:0;">
-            EG
-          </div>
-          <div>
-            <p style="font-weight:600; font-size:18px; margin:0;">Espinola Gaspar</p>
-            <p style="color:#6b7280; font-size:13px; margin:0;">Founder · Spinar</p>
-          </div>
-        </div>
-        <div style="display:flex; flex-direction:column; gap:12px;">
-          <a href="tel:+5491132368891" style="display:flex; align-items:center; gap:12px; color:#d1d5db; text-decoration:none; font-size:14px;" onmouseover="this.style.color='#22c55e'" onmouseout="this.style.color='#d1d5db'">
-            <span style="color:#22c55e; font-size:16px;">📞</span>
-            +549 113236 8891
-          </a>
-          <a href="mailto:spinar.services@gmail.com" style="display:flex; align-items:center; gap:12px; color:#d1d5db; text-decoration:none; font-size:14px;" onmouseover="this.style.color='#22c55e'" onmouseout="this.style.color='#d1d5db'">
-            <span style="color:#22c55e; font-size:16px;">✉️</span>
-            spinar.services@gmail.com
-          </a>
-        </div>
+  <!-- SOCIAL PROOF STRIP -->
+  <div style="border-top:1px solid #1A211A;border-bottom:1px solid #1A211A;padding:28px 0;overflow:hidden;">
+    <p style="text-align:center;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#4b5563;margin-bottom:20px;">Con la confianza de empresas líderes</p>
+    <div style="overflow:hidden;">
+      <div class="marquee-track" id="marquee">
+        <!-- logos generados por JS -->
       </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="border-t border-brand-border px-10 py-8 text-gray-500 text-sm text-center">
-      © 2026 Spinar — Technology in motion.
-    </footer>
-
+    </div>
   </div>
 
-  <script>
-    // Loader: hide when video ends (or after 5s fallback)
-    const loader  = document.getElementById('loader');
-    const page    = document.getElementById('page');
-    const video   = document.getElementById('intro-video');
+  <!-- PROPUESTA DE VALOR -->
+  <section style="padding:100px 40px;max-width:1200px;margin:0 auto;">
+    <p class="tag" style="margin-bottom:16px;">El problema que resolvemos</p>
+    <h2 style="font-size:clamp(28px,3vw,42px);font-weight:700;max-width:640px;margin-bottom:16px;">Tu negocio genera datos, procesos y fricción.</h2>
+    <p style="color:#9ca3af;font-size:16px;max-width:560px;line-height:1.7;margin-bottom:60px;">Las empresas que crecen rápido enfrentan los mismos cuellos de botella: sistemas que no se hablan, procesos que no escalan y tecnología que no acompaña la estrategia.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:16px;">⚙️</div>
+        <h3 style="font-weight:600;margin-bottom:10px;">Sistemas fragmentados</h3>
+        <p style="color:#9ca3af;font-size:14px;line-height:1.7;">Tus equipos trabajan con herramientas que no comparten datos. Automatizamos la integración para que la información fluya sin fricción.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:16px;">📈</div>
+        <h3 style="font-weight:600;margin-bottom:10px;">Procesos que no escalan</h3>
+        <p style="color:#9ca3af;font-size:14px;line-height:1.7;">Lo que funcionaba con 20 personas se rompe con 200. Diseñamos software que crece con tu organización.</p>
+      </div>
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:16px;">🧠</div>
+        <h3 style="font-weight:600;margin-bottom:10px;">Decisiones sin datos confiables</h3>
+        <p style="color:#9ca3af;font-size:14px;line-height:1.7;">Automatizamos captura, procesamiento y análisis con IA para que tomes decisiones sobre hechos, no suposiciones.</p>
+      </div>
+    </div>
+  </section>
 
-    function showPage() {
-      loader.classList.add('fade-out');
-      page.style.opacity = '1';
-      setTimeout(() => loader.remove(), 700);
+  <!-- SERVICIOS -->
+  <section style="padding:80px 40px;background:#080d08;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <p class="tag" style="margin-bottom:16px;">Lo que construimos</p>
+      <h2 style="font-size:clamp(28px,3vw,42px);font-weight:700;margin-bottom:12px;">Servicios</h2>
+      <p style="color:#9ca3af;font-size:16px;margin-bottom:52px;">Desde un módulo hasta una plataforma completa. Trabajamos en el alcance que tu empresa necesita.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;" id="services-grid"></div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section style="padding:100px 40px;max-width:1200px;margin:0 auto;">
+    <p class="tag" style="margin-bottom:16px;">Cómo trabajamos</p>
+    <h2 style="font-size:clamp(28px,3vw,42px);font-weight:700;margin-bottom:12px;">De la primera reunión al sistema en producción.</h2>
+    <p style="color:#9ca3af;font-size:16px;max-width:520px;margin-bottom:60px;">Un proceso claro, sin sorpresas y con visibilidad completa en cada etapa.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;">
+      <div>
+        <div class="step-num">01</div>
+        <h3 style="font-weight:600;font-size:18px;margin:8px 0;">Diagnóstico</h3>
+        <p style="color:#9ca3af;font-size:14px;line-height:1.7;">Entendemos tu negocio, tus sistemas y el problema real. Sin asumir, sin proponer antes de entender.</p>
+      </div>
+      <div>
+        <div class="step-num">02</div>
+        <h3 style="font-weight:600;font-size:18px;margin:8px 0;">Propuesta técnica</h3>
+        <p style="color:#9ca3af;font-size:14px;line-height:1.7;">Diseñamos la arquitectura, el alcance y el cronograma. Todo documentado antes de escribir una línea de código.</p>
+      </div>
+      <div>
+        <div class="step-num">03</div>
+        <h3 style="font-weight:600;font-size:18px;margin:8px 0;">Desarrollo iterativo</h3>
+        <p style="color:#9ca3af;font-size:14px;line-height:1.7;">Sprints con entregas parciales visibles. Tenés acceso al progreso en tiempo real y capacidad de ajuste continuo.</p>
+      </div>
+      <div>
+        <div class="step-num">04</div>
+        <h3 style="font-weight:600;font-size:18px;margin:8px 0;">Entrega y soporte</h3>
+        <p style="color:#9ca3af;font-size:14px;line-height:1.7;">Deploy en producción, capacitación del equipo y acompañamiento post-lanzamiento. No desaparecemos al entregar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFERENCIADORES -->
+  <section style="padding:100px 40px;background:#080d08;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <p class="tag" style="margin-bottom:16px;">Por qué SPINAR</p>
+      <h2 style="font-size:clamp(28px,3vw,42px);font-weight:700;max-width:600px;margin-bottom:52px;">No somos un proveedor más.<br>Somos el equipo técnico que te faltaba.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;">
+        <div class="card">
+          <div style="font-size:24px;margin-bottom:14px;">🎯</div>
+          <h3 style="font-weight:600;margin-bottom:10px;">Enfoque de negocio</h3>
+          <p style="color:#9ca3af;font-size:14px;line-height:1.7;">Entendemos procesos y estrategia antes de hablar de tecnología. Nuestras soluciones resuelven problemas de negocio, no solo de sistemas.</p>
+        </div>
+        <div class="card">
+          <div style="font-size:24px;margin-bottom:14px;">👤</div>
+          <h3 style="font-weight:600;margin-bottom:10px;">Equipo senior con ownership</h3>
+          <p style="color:#9ca3af;font-size:14px;line-height:1.7;">Tu proyecto tiene un lead técnico dedicado con accountability total desde el día 1. Sin juniors sin supervisión.</p>
+        </div>
+        <div class="card">
+          <div style="font-size:24px;margin-bottom:14px;">🔗</div>
+          <h3 style="font-weight:600;margin-bottom:10px;">Integración con lo que tenés</h3>
+          <p style="color:#9ca3af;font-size:14px;line-height:1.7;">No te pedimos que tires lo que funciona. Construimos sobre tu stack actual y lo extendemos de forma inteligente.</p>
+        </div>
+        <div class="card">
+          <div style="font-size:24px;margin-bottom:14px;">🚀</div>
+          <h3 style="font-weight:600;margin-bottom:10px;">Escalabilidad desde el diseño</h3>
+          <p style="color:#9ca3af;font-size:14px;line-height:1.7;">Cada solución está pensada para crecer. No en 6 meses te quedás sin espacio para escalar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK TECH -->
+  <section style="padding:80px 40px;max-width:1200px;margin:0 auto;">
+    <p class="tag" style="margin-bottom:16px;">Stack tecnológico</p>
+    <h2 style="font-size:clamp(24px,2.5vw,36px);font-weight:700;margin-bottom:12px;">Trabajamos con el stack que el problema requiere.</h2>
+    <p style="color:#9ca3af;font-size:15px;margin-bottom:48px;">No estamos casados con ninguna tecnología. Elegimos las herramientas correctas para cada caso.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;" id="tech-stack"></div>
+  </section>
+
+  <!-- CTA BLOQUE -->
+  <section style="margin:0 40px 80px;background:linear-gradient(135deg,#0a2010,#0f3018);border:1px solid #1e4a28;border-radius:20px;padding:72px 60px;text-align:center;">
+    <h2 style="font-size:clamp(28px,3vw,42px);font-weight:700;margin-bottom:16px;">¿Listo para dar el próximo paso?</h2>
+    <p style="color:#9ca3af;font-size:16px;max-width:520px;margin:0 auto 36px;line-height:1.7;">Agendá una consulta de 30 minutos con nuestro equipo. Sin compromiso. Solo analizamos tu caso y te decimos qué haríamos.</p>
+    <a href="/contacto" class="btn-primary" style="font-size:15px;padding:14px 32px;">Agendá tu consulta gratuita →</a>
+    <p style="color:#4b5563;font-size:13px;margin-top:16px;">Respondemos en menos de 24 horas hábiles.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="border-top:1px solid #1A211A;padding:60px 40px 32px;">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px;margin-bottom:48px;">
+      <div>
+        <img src="assets/images/logo.png" alt="Spinar" style="height:48px;object-fit:contain;margin-bottom:12px;" />
+        <p style="color:#6b7280;font-size:13px;line-height:1.7;">Tecnología que escala tu negocio.</p>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:600;margin-bottom:16px;color:#d1d5db;">Servicios</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="/servicios" style="color:#6b7280;font-size:13px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#6b7280'">Desarrollo de Software</a>
+          <a href="/servicios" style="color:#6b7280;font-size:13px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#6b7280'">Automatización con IA</a>
+          <a href="/servicios" style="color:#6b7280;font-size:13px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#6b7280'">Integración de Sistemas</a>
+          <a href="/servicios" style="color:#6b7280;font-size:13px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#6b7280'">Consultoría Tecnológica</a>
+          <a href="/servicios" style="color:#6b7280;font-size:13px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#6b7280'">Productos Digitales</a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:600;margin-bottom:16px;color:#d1d5db;">Empresa</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="/empresa" style="color:#6b7280;font-size:13px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#6b7280'">Quiénes somos</a>
+          <a href="/casos" style="color:#6b7280;font-size:13px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#6b7280'">Casos de éxito</a>
+          <a href="/insights" style="color:#6b7280;font-size:13px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#6b7280'">Insights</a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:13px;font-weight:600;margin-bottom:16px;color:#d1d5db;">Contacto</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="mailto:spinar.services@gmail.com" style="color:#6b7280;font-size:13px;text-decoration:none;" onmouseover="this.style.color='#22c55e'" onmouseout="this.style.color='#6b7280'">spinar.services@gmail.com</a>
+          <a href="tel:+5491132368891" style="color:#6b7280;font-size:13px;text-decoration:none;" onmouseover="this.style.color='#22c55e'" onmouseout="this.style.color='#6b7280'">+549 113236 8891</a>
+          <a href="https://linkedin.com/company/spinar" target="_blank" style="color:#6b7280;font-size:13px;text-decoration:none;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#6b7280'">LinkedIn →</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid #1A211A;padding-top:24px;text-align:center;">
+      <p style="color:#4b5563;font-size:12px;">© 2026 SPINAR — Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+</div><!-- /page -->
+
+<script>
+  // Loader
+  const loader = document.getElementById('loader');
+  const page   = document.getElementById('page');
+  const video  = document.getElementById('intro-video');
+  function showPage() {
+    loader.classList.add('out');
+    page.style.opacity = '1';
+    setTimeout(() => loader.remove(), 700);
+  }
+  video.addEventListener('ended', showPage);
+  setTimeout(showPage, 6000);
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 40) {
+      nav.style.background = 'rgba(5,8,5,0.92)';
+      nav.style.backdropFilter = 'blur(12px)';
+      nav.style.borderBottom = '1px solid #1A211A';
+    } else {
+      nav.style.background = 'transparent';
+      nav.style.backdropFilter = 'none';
+      nav.style.borderBottom = 'none';
     }
+  });
 
-    video.addEventListener('ended', showPage);
-    setTimeout(showPage, 5000); // fallback if video fails
+  // Marquee logos
+  const companies = ['Empresa A','Empresa B','Empresa C','Empresa D','Empresa E','Empresa F'];
+  const track = document.getElementById('marquee');
+  [...companies, ...companies].forEach(name => {
+    const el = document.createElement('div');
+    el.style.cssText = 'color:#374151;font-size:15px;font-weight:600;letter-spacing:.05em;white-space:nowrap;';
+    el.textContent = name;
+    track.appendChild(el);
+  });
 
-    // Service cards
-    const services = [
-      { title: 'Backend Engineering', desc: 'High-performance and scalable server-side solutions.' },
-      { title: 'AI & Automation',      desc: 'Intelligent pipelines that reduce manual overhead.' },
-      { title: 'System Architecture',  desc: 'Resilient designs built for long-term growth.' },
-      { title: 'API Development',      desc: 'Clean, documented APIs that connect everything.' },
-    ];
-    const grid = document.getElementById('services-grid');
-    services.forEach(({ title, desc }) => {
-      grid.innerHTML += `
-        <div style="background:#0F1410; border:1px solid #1A211A; border-radius:12px; padding:24px; transition: border-color .2s;"
-             onmouseover="this.style.borderColor='#22c55e'" onmouseout="this.style.borderColor='#1A211A'">
-          <h3 style="font-weight:500; margin-bottom:8px;">${title}</h3>
-          <p style="font-size:14px; color:#9ca3af; line-height:1.6;">${desc}</p>
-        </div>`;
-    });
-  </script>
+  // Servicios
+  const services = [
+    { icon:'💻', tag:'Core', title:'Desarrollo de Software', desc:'Aplicaciones web, plataformas internas y productos digitales construidos para tu negocio específico. Sin código genérico.' },
+    { icon:'🤖', tag:'Destacado', title:'Automatización con IA', desc:'Flujos de trabajo, aprobaciones y análisis integrados con modelos de IA en tus sistemas actuales.' },
+    { icon:'🔌', tag:'Core', title:'Integración de Sistemas', desc:'Conectamos tu ERP, CRM, plataforma logística y BI para que funcionen como un ecosistema único.' },
+    { icon:'🗺️', tag:'Estratégico', title:'Consultoría Tecnológica', desc:'Auditamos tu arquitectura y diseñamos una hoja de ruta alineada con tu estrategia de negocio.' },
+    { icon:'📦', tag:'Producto', title:'Productos Digitales', desc:'Del prototipo al go-to-market, con equipo técnico dedicado.' },
+  ];
+  const grid = document.getElementById('services-grid');
+  services.forEach(s => {
+    grid.innerHTML += `
+      <div class="card" style="position:relative;">
+        ${s.tag === 'Destacado' ? '<span style="position:absolute;top:16px;right:16px;background:#166534;color:#bbf7d0;font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;">Más solicitado</span>' : ''}
+        <div style="font-size:26px;margin-bottom:14px;">${s.icon}</div>
+        <span style="font-size:11px;color:#4b5563;font-weight:600;letter-spacing:.08em;text-transform:uppercase;">${s.tag}</span>
+        <h3 style="font-weight:600;font-size:16px;margin:8px 0 10px;">${s.title}</h3>
+        <p style="color:#9ca3af;font-size:13px;line-height:1.7;margin-bottom:18px;">${s.desc}</p>
+        <a href="/servicios" style="color:#22c55e;font-size:13px;font-weight:500;text-decoration:none;">Ver servicio →</a>
+      </div>`;
+  });
 
+  // Tech stack
+  const techs = ['Python','Node.js','React','Next.js','PostgreSQL','AWS','Google Cloud','OpenAI','LangChain','Docker','n8n','GraphQL','REST APIs','GitHub Actions'];
+  const stackEl = document.getElementById('tech-stack');
+  techs.forEach(t => {
+    stackEl.innerHTML += `<span style="background:#0F1410;border:1px solid #1A211A;color:#9ca3af;font-size:13px;padding:8px 16px;border-radius:8px;">${t}</span>`;
+  });
+</script>
 </body>
 </html>
