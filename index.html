@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spinar — Technology in Motion</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-bg':     '#050805',
+            'brand-border': '#1A211A',
+            'brand-card':   '#0F1410',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body { background-color: #050805; }
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #050805;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease;
+    }
+    #loader.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #loader video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body class="bg-brand-bg text-white min-h-screen font-sans">
+
+  <!-- LOADER -->
+  <div id="loader">
+    <video id="intro-video" autoplay playsinline muted>
+      <source src="WhatsApp Video 2026-04-26 at 7.27.32 PM.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <!-- PAGE -->
+  <div id="page" style="opacity:0; transition: opacity 0.6s ease;">
+
+    <!-- HEADER -->
+    <header class="flex justify-between items-center px-10 py-5 border-b border-brand-border">
+      <div class="flex items-center">
+        <img src="image.png" alt="Spinar" style="height:88px; object-fit:contain;" />
+      </div>
+      <button class="bg-gradient-to-r from-green-700 to-green-500 px-5 py-2 rounded-md text-sm font-medium hover:opacity-90 transition">
+        Let's talk
+      </button>
+    </header>
+
+    <!-- HERO -->
+    <section class="px-10 py-28 max-w-5xl">
+      <p class="text-green-400 text-xs tracking-widest mb-4 uppercase">Technology in Motion</p>
+      <h1 class="text-6xl font-semibold leading-tight mb-6">
+        We build systems that<br>move your business
+        <span class="text-green-400"> forward.</span>
+      </h1>
+      <p class="text-gray-400 text-lg max-w-xl leading-relaxed">
+        Scalable backend systems, intelligent automation and modern architectures designed for growth.
+      </p>
+      <div class="mt-10 flex gap-4">
+        <button class="bg-green-600 hover:bg-green-500 transition px-6 py-3 rounded-md text-sm font-medium">
+          Our services
+        </button>
+        <button class="border border-gray-700 hover:border-gray-500 transition px-6 py-3 rounded-md text-sm">
+          Contact
+        </button>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="px-10 py-20">
+      <h2 class="text-2xl font-medium mb-10">What we do</h2>
+      <div id="services-grid" class="grid gap-6" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-brand-border px-10 py-8 text-gray-500 text-sm text-center">
+      © 2026 Spinar — Technology in motion.
+    </footer>
+
+  </div>
+
+  <script>
+    // Loader: hide when video ends (or after 5s fallback)
+    const loader  = document.getElementById('loader');
+    const page    = document.getElementById('page');
+    const video   = document.getElementById('intro-video');
+
+    function showPage() {
+      loader.classList.add('fade-out');
+      page.style.opacity = '1';
+      setTimeout(() => loader.remove(), 700);
+    }
+
+    video.addEventListener('ended', showPage);
+    setTimeout(showPage, 5000); // fallback if video fails
+
+    // Service cards
+    const services = [
+      { title: 'Backend Engineering', desc: 'High-performance and scalable server-side solutions.' },
+      { title: 'AI & Automation',      desc: 'Intelligent pipelines that reduce manual overhead.' },
+      { title: 'System Architecture',  desc: 'Resilient designs built for long-term growth.' },
+      { title: 'API Development',      desc: 'Clean, documented APIs that connect everything.' },
+    ];
+    const grid = document.getElementById('services-grid');
+    services.forEach(({ title, desc }) => {
+      grid.innerHTML += `
+        <div style="background:#0F1410; border:1px solid #1A211A; border-radius:12px; padding:24px; transition: border-color .2s;"
+             onmouseover="this.style.borderColor='#22c55e'" onmouseout="this.style.borderColor='#1A211A'">
+          <h3 style="font-weight:500; margin-bottom:8px;">${title}</h3>
+          <p style="font-size:14px; color:#9ca3af; line-height:1.6;">${desc}</p>
+        </div>`;
+    });
+  </script>
+
+</body>
+</html>
